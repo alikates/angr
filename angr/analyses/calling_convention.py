@@ -730,6 +730,9 @@ class CallingConventionAnalysis(Analysis):
         elif arch_name == "X86":
             return 8 <= variable.reg < 24 or 160 <= variable.reg < 288  # eax, ebx, ecx, edx  # xmm0-xmm7
 
+        elif arch.name == "RISCV64":
+            return 80 <= variable.reg < 144
+
         else:
             l.critical("Unsupported architecture %s.", arch.name)
             return True
